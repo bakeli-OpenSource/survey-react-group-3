@@ -2,39 +2,39 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const CreateForm = () => {
-    const [surveyTitle, setSurveyTitle] = useState('');
-    const [questions, setQuestions] = useState([{ text: '', options: [''] }]);
+    const [titre, setSurveyTitle] = useState('');
+    const [contenu, setQuestions] = useState([{ text: '', options: [''] }]);
 
     const handleQuestionTextChange = (index, value) => {
-        const newQuestions = [...questions];
+        const newQuestions = [...contenu];
         newQuestions[index].text = value;
         setQuestions(newQuestions);
     };
 
     const handleOptionChange = (questionIndex, optionIndex, value) => {
-        const newQuestions = [...questions];
+        const newQuestions = [...contenu];
         newQuestions[questionIndex].options[optionIndex] = value;
         setQuestions(newQuestions);
     };
 
     const addQuestion = () => {
-        setQuestions([...questions, { text: '', options: [''] }]);
+        setQuestions([...contenu, { text: '', options: [''] }]);
     };
 
     const addOption = (questionIndex) => {
-        const newQuestions = [...questions];
+        const newQuestions = [...contenu];
         newQuestions[questionIndex].options = [...newQuestions[questionIndex].options, ''];
         setQuestions(newQuestions);
     };
 
     const removeQuestion = (index) => {
-        const newQuestions = [...questions];
+        const newQuestions = [...contenu];
         newQuestions.splice(index, 1);
         setQuestions(newQuestions);
     };
 
     const removeOption = (questionIndex, optionIndex) => {
-        const newQuestions = [...questions];
+        const newQuestions = [...contenu];
         newQuestions[questionIndex].options.splice(optionIndex, 1);
         setQuestions(newQuestions);
     };
@@ -45,8 +45,8 @@ const CreateForm = () => {
         try {
             // Envoyer une requête POST à l'API Laravel
             const response = await axios.post('http://localhost:8000/api/sondage/create', {
-                title: surveyTitle,
-                questions: questions,
+                title: titre,
+                questions: contenu,
             });
 
             // Gérer la réponse, rediriger ou afficher un message de succès
@@ -69,11 +69,11 @@ const CreateForm = () => {
             <input
                 className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 text-black text-sm border border-blue-300 w-full"
                 type="text"
-                value={surveyTitle}
+                value={titre}
                 onChange={(e) => setSurveyTitle(e.target.value)}
             />
 
-            {questions.map((question, questionIndex) => (
+            {contenu.map((question, questionIndex) => (
                 <div key={questionIndex}>
                     <textarea
                         id={`questionTextField-${questionIndex}`}
@@ -111,7 +111,7 @@ const CreateForm = () => {
                         Ajouter une option
                     </button>
 
-                    {questions.length > 1 && (
+                    {contenu.length > 1 && (
                         <button
                             type="button"
                             onClick={() => removeQuestion(questionIndex)}
