@@ -2,16 +2,16 @@
 import { Link } from 'react-router-dom';
 import * as React from 'react';
 import { useSpring, animated } from 'react-spring';
-import img1 from '../images/img-sondage.jpg';
+import img1 from '../images/Banner.png';
 
 function Home() {
-   const backgroundImageStyle = {
-      backgroundImage: `url(${img1})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      minWidth: '100vw',
-   };
+   // const backgroundImageStyle = {
+   //    backgroundImage: `url(${img1})`,
+   //    backgroundSize: 'cover',
+   //    backgroundPosition: 'center',
+   //    minHeight: '100vh',
+   //    minWidth: '95vw',
+   // };
 
    const textAnimation = useSpring({
       opacity: 1,
@@ -37,23 +37,34 @@ function Home() {
     
 
    return (
-   
-      <div className="text-black min-h-screen py-8 mx-8 flex flex-col justify-center items-center" style={backgroundImageStyle}>
-         <animated.h1 style={textAnimation} className="text-5xl font-bold mb-6">
+    <div className="rxdform min-h-screen ">  
+     <h1 className="text-4xl font-bold bg-blue-700 py-2 shadow-lg">RxDForm</h1>
+    {/* <div className="  w-full flex flex-col sm:flex-row justify-content-between items-center " > */}
+      <div className="  flex flex-col sm:flex-row content " >
+        <div className="  flex flex-col  justify-center items-center text-black border border-4 border-t-0
+          border-blue-700   shadow-2xl ">
+       
+          <animated.h1 style={textAnimation} className="text-4xl font-bold mb-6   rounded">
             Bienvenue sur notre plateforme de sondage
-         </animated.h1>
-         <animated.p style={textanimation} className="text-2xl font-bold mb-8">
+          </animated.h1>
+          <animated.p style={textanimation} className="text-xl font-bold mb-8">
             Participez à nos sondages et partagez votre opinion avec nous !!!
-         </animated.p>
-
-         <Link to="/connexion">
+          </animated.p>
+          <Link to="/connexion">
             <animated.button
-               style={{ ...buttonAnimation, willChange: 'transform' }} className="mx-auto h-12 px-6 w-40 bg-blue-600 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-blue-700">
-               Call To Action
+              style={buttonAnimation} className="mx-auto h-12 px-6 w-40 bg-green-600 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-green-800">
+              Call To Action
             </animated.button>
-         </Link>
+          </Link>
+        </div>
+        
+        <div className="overflow-hidden "> <img src={img1} alt="" className=" sm-w-auto bg-blue-300 py-12 content w-full object-cover  shadow-lg" /> </div>
       </div>
-   );
+      
+      </div>
+      
+    );
+    
 }
 
 export default Home;
