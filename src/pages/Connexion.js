@@ -103,6 +103,7 @@ function Connexion() {
       .then(({ data }) => {
         setCurrentUser(data.user);
         setUserToken(data.token);
+        sessionStorage.setItem('token', data.token);
         setLoading(true);
         console.log(data);
         alert(`Bienvenu ${data.user.name}`);

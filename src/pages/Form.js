@@ -3,11 +3,11 @@ import axios from 'axios';
 
 const CreateForm = () => {
     const [titre, setSurveyTitle] = useState('');
-    const [contenu, setQuestions] = useState([{ text: '', options: [''] }]);
+    const [contenu, setQuestions] = useState([{ question: '', options: [''] }]);
 
     const handleQuestionTextChange = (index, value) => {
         const newQuestions = [...contenu];
-        newQuestions[index].text = value;
+        newQuestions[index].question = value;
         setQuestions(newQuestions);
     };
 
@@ -18,7 +18,7 @@ const CreateForm = () => {
     };
 
     const addQuestion = () => {
-        setQuestions([...contenu, { text: '', options: [''] }]);
+        setQuestions([...contenu, { question: '', options: [''] }]);
     };
 
     const addOption = (questionIndex) => {
@@ -39,15 +39,23 @@ const CreateForm = () => {
         setQuestions(newQuestions);
     };
 
+    let token = sessionStorage.getItem('token');
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             // Envoyer une requête POST à l'API Laravel
             const response = await axios.post('http://localhost:8000/api/sondage/create', {
-                title: titre,
-                questions: contenu,
-            });
+                titre: titre,
+                contenu: contenu,             
+            },
+            {
+                headers: {
+                    "Authorization" : `Bearer ${token}`
+                },
+            }
+            );
 
             // Gérer la réponse, rediriger ou afficher un message de succès
             console.log('Sondage créé avec succès:', response.data);
@@ -77,7 +85,7 @@ const CreateForm = () => {
                 <div key={questionIndex}>
                     <textarea
                         id={`questionTextField-${questionIndex}`}
-                        value={question.text}
+                        value={question.question}
                         onChange={(e) => handleQuestionTextChange(questionIndex, e.target.value)}
                         className="flex items-center h-20 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 text-black border border-blue-300 w-full"
                         placeholder={`Texte de la Question ${questionIndex + 1}`}
