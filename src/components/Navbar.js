@@ -22,11 +22,11 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link to="/connexion" className="ml-4">
             <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
-            Connexion
+            Username
           </Link>
           <Link to="/inscription" className="ml-4">
             <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
-            Inscription
+            Déconnexion
           </Link>
         </div>
       </div>

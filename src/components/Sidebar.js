@@ -1,6 +1,6 @@
 // Sidebar.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importer Link depuis React Router
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Card,
   Typography,
@@ -20,7 +20,9 @@ import {
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 
+
 export function DefaultSidebar() {
+  const navigate = useNavigate();
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 rounded-none shadow-2xl shadow-yellow-300">
       <div className="mb-2 p-4 bg-custum-gold">
@@ -49,7 +51,7 @@ export function DefaultSidebar() {
         
         <ListItem>
           <ListItemPrefix>
-            <Link to="/mes-resultats" className="text-yellow-400 hover:text-yellow-500"> {/* Ajouter un lien vers la page Mes Résultats */}
+            <Link to="/DisplaySurvey" className="text-yellow-400 hover:text-yellow-500"> {/* Ajouter un lien vers la page Mes Résultats */}
               <Cog6ToothIcon className="h-5 w-5" />
             </Link>
           </ListItemPrefix>

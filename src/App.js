@@ -9,6 +9,8 @@ import Sondages from './pages/Sondages';
 import Form from './pages/Form';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DisplaySurvey from './pages/DisplaySurvey';
+import Sondage from './pages/Sondage';
+import Liste from './pages/Liste';
 
 function App() {
   return (     
@@ -27,6 +29,8 @@ function App() {
         <Route path="/Sondages" element={<Sondages />} />
         
         <Route path="/DisplaySurvey" element={<DisplaySurvey/>}/>
+        <Route path="/Sondage/:id" element={<Sondage/>}/>
+        <Route path='/Sondages/liste' element={<Liste/>}/>
         
 
         </Routes>

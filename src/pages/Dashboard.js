@@ -23,7 +23,7 @@ const Dashboard = () => {
         {/* Contenu du Dashboard */}
         <div className="flex-grow p-4 flex items-center justify-center">
   {/* Bouton "Créer ton premier sondage" avec Link */}
-  <Link to="../createSurvey">
+  <Link to="../CreateSurvey">
     <button className="bg-gray-500 text-white px-8 py-4 rounded-2xl shadow-2xl text-2xl font-bold hover:bg-green-600">
       Créer ton premier sondage
     </button>
