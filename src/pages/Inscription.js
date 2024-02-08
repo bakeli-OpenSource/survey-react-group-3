@@ -24,7 +24,7 @@ function Inscription() {
     return;
   }
     // Effectuer une requête POST vers l'API Laravel
-    axios.post('http://127.0.0.1:8000/api/register', {
+    axios.post('https://api-survey-3.fewnu.app/api/register', {
       name: fullName,
       email,
       telephone,
