@@ -8,9 +8,10 @@ import CreateSurvey from './pages/CreateSurvey';
 import Sondages from './pages/Sondages';
 import Form from './pages/Form';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DisplaySurvey from './pages/DisplaySurvey';
 
 function App() {
-  return (
+  return (     
     <div className="App">
       <header className="App-header">
        
@@ -25,6 +26,9 @@ function App() {
         <Route path="/CreateSurvey" element={<CreateSurvey />} />
         <Route path="/Sondages" element={<Sondages />} />
         
+        <Route path="/DisplaySurvey" element={<DisplaySurvey/>}/>
+        
+
         </Routes>
         </BrowserRouter>
 

@@ -4,8 +4,10 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import { DefaultSidebar } from '../components/Sidebar';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const CreateSurvey = () => {
+    const navitage = useNavigate();
   const [titre, setSurveyTitle] = useState('');
   const [contenu, setQuestions] = useState([{ question: '', options: [''] }]);
 
@@ -63,6 +65,7 @@ const CreateSurvey = () => {
 
           // Gérer la réponse, rediriger ou afficher un message de succès
           console.log('Sondage créé avec succès:', response.data);
+          navitage('/DisplaySurvey', { replace: true});
       } catch (error) {
           // Gérer les erreurs, afficher un message d'erreur, etc.
           console.error('Erreur lors de la création du sondage:', error);

@@ -1,83 +1,3 @@
-// @flow strict
-
-// import * as React from 'react';
-// import { Link } from 'react-router-dom';
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-
-// function Connexion() {
-
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const navigate = useNavigate();
-
-//     const onSubmit = (e) => {
-//         e.preventDefault();
-
-//         axios.post('http://127.0.0.1:8000/api/login', {
-//             email,
-//             password,
-//         })
-//             .then((response) => {
-//                 console.log(response.data);
-//                 alert('Connexion réussie !');
-//                 navigate("/Form");
-//             })
-//             .catch((error) => {
-//                 console.error(error);
-
-//             });
-//     };
-
-
-
-
-//     return (
-//         <div className=" text-black text-left sm:mx-auto sm:w-full sm:max-w-md " >
-
-//             Bienvenue sur la page de Connexion
-//             <h1 className="font-bold text-2xl pb-4">Welcome Back :)</h1>
-
-//             <form onSubmit={onSubmit} className="flex flex-col bg-white rounded shadow-2xl p-14 mt-4 rounded-2xl pt-8 bg-gradient-to-r from-blue-400 to-blue-200" action="">
-//                 <h2 className="mt-0 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-//                     Sign in
-//                 </h2>
-//                 <label className="font-semibold text-base text-black text-left" htmlFor="usernameField">Email address</label>
-//                 <input className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 text-black text-sm border border-blue-300 w-full"
-//                     type="email"
-//                     value={email}
-//                     autoComplete="email"
-//                     required
-//                     onChange={(e) => setEmail(e.target.value)}
-//                 />
-//                 <label className="font-semibold text-base text-black text-left mt-3" htmlFor="passwordField">Password</label>
-//                 <input className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 text-black border border-blue-300 w-full"
-//                     type="password"
-//                     value={password}
-//                     required
-//                     onChange={(e) => setPassword(e.target.value)}
-//                 />
-//                 <button className="flex items-center justify-center h-12 px-6 w-64 bg-blue-600 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-blue-700 w-full"
-//                     type="submit">Login</button>
-
-//                 <h2 className=" mt-6 text-center">
-//                     <Link
-//                         to="/inscription"
-//                         className="font-medium text-indigo-600  hover:text-indigo-500"
-//                     >
-//                         sign Up
-//                     </Link>
-//                 </h2>
-//             </form>
-
-//         </div>
-//     );
-// }
-
-// export default Connexion;
-
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -90,11 +10,11 @@ function Connexion() {
   const navitage = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({ __html: "" });
+
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setError({ __html: "" });
+   
 
     axiosClient
       .post("/login", {
@@ -104,7 +24,7 @@ function Connexion() {
       .then(({ data }) => {
         setCurrentUser(data.user);
         setUserToken(data.token);
-        sessionStorage.setItem('token', data.token);
+        localStorage.setItem('token', data.token);
         setLoading(true);
         console.log(data);
         alert(`Bienvenue ${data.user.name}`);
@@ -118,7 +38,7 @@ function Connexion() {
             []
           );
           console.log(finalErrors);
-          setError({ __html: finalErrors.join("<br>") });
+         
         }
         console.error(error);
       });
@@ -157,11 +77,11 @@ function Connexion() {
     <div style={containerStyle}>
       <div style={imageContainerStyle}></div>
       <div style={descriptionContainerStyle}>
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        {/* <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           {error.__html && (
             <div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}></div>
           )}
-        </div>
+        </div> */}
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form style={formStyle} className="space-y-6" onSubmit={onSubmit} action="#" method="POST">
