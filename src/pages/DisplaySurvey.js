@@ -51,7 +51,7 @@ const AfficherSondage = () => {
           }
           
             {/* <h2 className={donneesSondage.length === 0 ? 'text-red-600' : 'text-lime-500'}>Liste des sondages</h2> */}
-            <ul className="space-y-4">
+            <ul className="border border-blue-500 border-4 rounded-lg shadow-2xl  space-y-4">
     {donneesSondage.map((sondage, index) => (
         <li key={index} className="border p-4 rounded-md">
             <h3 className="bg-gray-700 text-white py-2 px-4 rounded-md">{sondage.titre}</h3>
