@@ -7,6 +7,8 @@ import Connexion from './pages/Connexion';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Form from './pages/Form';
 import DisplaySurvey from './pages/DisplaySurvey';
+import Sondage from './pages/Sondage';
+import Liste from './pages/Liste';
 
 function App() {
   return (     
@@ -21,6 +23,8 @@ function App() {
         <Route path="/Connexion" element={<Connexion/>}/>
         <Route path="/Form" element={<Form/>}/>
         <Route path="/DisplaySurvey" element={<DisplaySurvey/>}/>
+        <Route path="/Sondage/:id" element={<Sondage/>}/>
+        <Route path='/Sondages/liste' element={<Liste/>}/>
         
 
         </Routes>

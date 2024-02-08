@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateForm = () => {
+    const navitage = useNavigate();
     const [titre, setSurveyTitle] = useState('');
     const [contenu, setQuestions] = useState([{ question: '', options: [''] }]);
 
@@ -59,6 +61,7 @@ const CreateForm = () => {
 
             // Gérer la réponse, rediriger ou afficher un message de succès
             console.log('Sondage créé avec succès:', response.data);
+            navitage('/DisplaySurvey', { replace: true });
         } catch (error) {
             // Gérer les erreurs, afficher un message d'erreur, etc.
             console.error('Erreur lors de la création du sondage:', error);
