@@ -66,20 +66,20 @@ const AfficherSondage = () => {
             Cela peut prendre quelques secondes, veuillez ne pas fermer cette
             page.
           </p>
-        </div>) : (<h2 className="text-black my-4">Nouveau Sondage</h2>)
+        </div>) : (<h2 className="text-black font-bold text-xl my-4">Titre du Sondage</h2>)
       }
-
-      <ul>
-        <h3 className='bg-orange-600'>{titre}</h3>
+<div class="w-64 h-auto bg-gray-300 mb-16">
+<ul class="">
+        <h3 className='bg-orange-500 text-xl text-white'>{titre}</h3>
         <ul>
           {contenu.map((question, indexQuestion) => (
             <li key={indexQuestion}>
-              <p className='text-black'>Question {indexQuestion + 1}</p>
-              <p className='text-black'>{question.question}</p>
+              <p className='text-blue-600 p-3'>Question {indexQuestion + 1}</p>
+              <p className='text-black p-3 '>{question.question}</p>
               <ul>
-                <p className='bg-orange-600'> options</p>
+                <p className='bg-gray-800 text-xl text-white'> options</p>
                 {question.options.map((option, indexOption) => (
-                  <li key={indexOption}>
+                  <li className='p-3 text-left font-bold' key={indexOption}>
                     <input
                       type="checkbox"
                       id={`option-${indexQuestion}-${indexOption}`}
@@ -93,7 +93,12 @@ const AfficherSondage = () => {
             </li>
           ))}
         </ul>
+        <button className="w-100 bg-blue-600 mb-8 rounded p-3 font-semibold text-sm text-blue-100 hover:bg-blue-700">
+              Envoyer
+            </button>
       </ul>
+</div>
+     
     </div>
 </div>
 
