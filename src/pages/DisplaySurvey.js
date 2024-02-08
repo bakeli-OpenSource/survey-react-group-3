@@ -51,26 +51,26 @@ const AfficherSondage = () => {
           }
           
             {/* <h2 className={donneesSondage.length === 0 ? 'text-red-600' : 'text-lime-500'}>Liste des sondages</h2> */}
-            <ul>
+            <ul className="space-y-4">
     {donneesSondage.map((sondage, index) => (
-        <li key={index}>
-            <h3 className='bg-gray-700'>{sondage.titre}</h3>
-            <ul>
+        <li key={index} className="border p-4 rounded-md">
+            <h3 className="bg-gray-700 text-white py-2 px-4 rounded-md">{sondage.titre}</h3>
+            <ul className="mt-4 space-y-2">
                 {sondage.contenu.map((question, indexQuestion) => (
                     <li key={indexQuestion}>
-                        <p className='text-lime-400'>Question {indexQuestion + 1}</p>
-                        <p className='text-amber-600'>{question.question}</p>
-                        <ul>
-                            <p className='bg-sky-800'> options</p>
+                        <p className="text-lime-900 underline">Question {indexQuestion + 1} :</p>
+                        <p className="text-amber-600">{question.question}</p>
+                        <ul className="mt-2 space-y-1">
+                            <li className="bg-sky-800 text-white p-2 rounded-md">Options :</li>
                             {question.options.map((option, indexOption) => (
-                                <li key={indexOption}>
+                                <li key={indexOption} className="flex items-center space-x-2">
                                     <input
                                         type="checkbox"
                                         id={`option-${index}-${indexQuestion}-${indexOption}`}
                                         name={`option-${index}-${indexQuestion}`}
                                         value={option}
                                     />
-                                    <label htmlFor={`option-${index}-${indexQuestion}-${indexOption}`}className='text-black'>{option}</label>
+                                    <label htmlFor={`option-${index}-${indexQuestion}-${indexOption}`} className="text-black">{option}</label>
                                 </li>
                             ))}
                         </ul>
@@ -80,6 +80,7 @@ const AfficherSondage = () => {
         </li>
     ))}
 </ul>
+
 
 
         </div>
