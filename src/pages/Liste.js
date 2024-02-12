@@ -52,11 +52,11 @@ const AfficherSondage = () => {
           
             {/* <h2 className={donneesSondage.length === 0 ? 'text-red-600' : 'text-lime-500'}>Liste des sondages</h2> */}
             <ul className="space-y-4">
-    {donneesSondage.map((sondage, index) => (
+    { donneesSondage && donneesSondage.map((sondage, index) => (
         <li key={index} className="border p-4 rounded-md">
             <h3 className="bg-gray-700 text-white py-2 px-4 rounded-md">{sondage.titre}</h3>
             <ul className="mt-4 space-y-2">
-                {sondage.contenu.map((question, indexQuestion) => (
+                { sondage.contenu && sondage.contenu.map((question, indexQuestion) => (
                     <li key={indexQuestion}>
                         <p className="text-lime-900 underline">Question {indexQuestion + 1} :</p>
                         <p className="text-amber-600">{question.question}</p>

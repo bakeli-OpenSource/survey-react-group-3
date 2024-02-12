@@ -1,6 +1,6 @@
 // Sidebar.js
 import React from 'react';
-import { Link,} from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 import {
   Card,
   Typography,
@@ -12,7 +12,6 @@ import {
 } from "@material-tailwind/react";
 import {
   PresentationChartBarIcon,
-  ShoppingBagIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   InboxIcon,
@@ -29,28 +28,25 @@ export function DefaultSidebar() {
 
         </Typography>
       </div>
-      <List>
-        <ListItem>
-          <ListItemPrefix>
-            <Link to="/Dashboard" className="text-yellow-400 hover:text-yellow-500"> {/* Ajouter un lien vers la page Dashboard */}
-              <PresentationChartBarIcon className="h-5 w-5" />
-            </Link>
-          </ListItemPrefix>
-          <span onClick={() => window.location.href = '/Dashboard'} className="cursor-pointer">Dashboard</span>
-        </ListItem>
+      <List className='border-2 border-yellow-400 rounded-lg shadow-2xl -mt-14 pb-14 pt-8'>
+      <ListItem className='cursor-pointer text-black hover:bg-yellow-500 my-1  rounded'>
+  <ListItemPrefix>
+    <PresentationChartBarIcon className="h-5 w-5 text-yellow-400 hover:text-yellow-500" />
+  </ListItemPrefix>
+  <Link to="/Dashboard" className="cursor-pointer text-black  ">Dashboard</Link>
+</ListItem>
+
 
         {/* Nouveaux éléments */}
-        <ListItem>
+        <ListItem  className='cursor-pointer text-black hover:bg-yellow-500 my-1  rounded'>
           <ListItemPrefix>
-            <Link to="/Liste" className="text-yellow-400 hover:text-yellow-500"> {/* Ajouter un lien vers la page Mes Sondages */}
-              <ChartBarIcon className="h-5 w-5" />
-            </Link>
+            <ChartBarIcon className="h-5 w-5 text-yellow-400 hover:text-yellow-500" />
           </ListItemPrefix>
-          <span onClick={() => window.location.href = '/Liste'} className="cursor-pointer">Mes Sondages</span>
-          
+          <Link to="/Liste" className="cursor-pointer text-black">Mes Sondages</Link>
         </ListItem>
 
-        <ListItem>
+
+        <ListItem className='cursor-pointer text-black hover:bg-yellow-500 my-1  rounded'>
           <ListItemPrefix>
             <Link to="/DisplaySurvey" className="text-yellow-400 hover:text-yellow-500"> {/* Ajouter un lien vers la page Mes Résultats */}
               <Cog6ToothIcon className="h-5 w-5" />
@@ -58,7 +54,7 @@ export function DefaultSidebar() {
           </ListItemPrefix>
           <span onClick={() => window.location.href = 'DisplaySurvey'} className="cursor-pointer">Mes Résultats</span>
 
-          
+
         </ListItem>
         <ListItem>
           <ListItemPrefix>

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import axios from 'axios';
+import axiosClient from "../axios.js";
 
 
 function Inscription() {
@@ -24,7 +24,7 @@ function Inscription() {
     return;
   }
     // Effectuer une requête POST vers l'API Laravel
-    axios.post('https://api-survey-3.fewnu.app/api/register', {
+    axiosClient.post('/register', {
       name: fullName,
       email,
       telephone,
