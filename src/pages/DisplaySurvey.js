@@ -10,8 +10,8 @@ const AfficherSondage = () => {
   const [titre, setTitre] = useState('');
   const [lien, setLien] = useState('');
   const [contenu, setContenu] = useState([]);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  // const [title, setTitle] = useState('');
+  // const [body, setBody] = useState('');
 
   useEffect(() => {
     // Récupérer les données du sondage depuis l'API
@@ -39,30 +39,30 @@ const AfficherSondage = () => {
 
   }, []); // L'effet sera exécuté une seule fois lors du montage du composant
 
-  useEffect(() => {
-    // Récupérer les données du sondage depuis l'API
-    const sendMail = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/api/send-mail/{sondage}', {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          },
-        });
-        console.log(response.data);
-        setTitle(response.data.title)
-        setBody(response.data.body);
-      } catch (erreur) {
-        console.error('Erreur lors de la récupération des données du sondage :', erreur);
-      }
-    };
+  // useEffect(() => {
+  //   // Récupérer les données du sondage depuis l'API
+  //   const sendMail = async () => {
+  //     try {
+  //       const response = await axios.get('http://127.0.0.1:8000/api/send-mail/{sondage}', {
+  //         headers: {
+  //           "Authorization": `Bearer ${token}`
+  //         },
+  //       });
+  //       console.log(response.data);
+  //       setTitle(response.data.title)
+  //       setBody(response.data.body);
+  //     } catch (erreur) {
+  //       console.error('Erreur lors de la récupération des données du sondage :', erreur);
+  //     }
+  //   };
 
-    return () => {
+  //   return () => {
 
-      sendMail();
-    }
-    // recupererDonnees();
+  //     sendMail();
+  //   }
+  //   // recupererDonnees();
 
-  }, []);
+  // }, []);
 
 
   return (
