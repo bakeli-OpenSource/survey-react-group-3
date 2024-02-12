@@ -10,7 +10,7 @@ const AfficherSondage = () => {
         // Récupérer les données du sondage depuis l'API
         const recupererDonnees = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/sondage/1', {
+                const response = await axios.get('http://127.0.0.1:8000/api/sondage/{sondage}', {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },

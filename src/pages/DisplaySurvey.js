@@ -8,12 +8,16 @@ let token = localStorage.getItem('token');
 
 const AfficherSondage = () => {
   const [titre, setTitre] = useState('');
+  const [lien, setLien] = useState('');
   const [contenu, setContenu] = useState([]);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+
   useEffect(() => {
     // Récupérer les données du sondage depuis l'API
     const recupererDonnees = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/sondage/view', {
+        const response = await axios.get('http://127.0.0.1:8000/api/sondage/view', {
           headers: {
             "Authorization": `Bearer ${token}`
           },
@@ -21,6 +25,7 @@ const AfficherSondage = () => {
         console.log(response.data);
         setTitre(response.data.titre)
         setContenu(response.data.contenu);
+        setLien(response.data.lien);
       } catch (erreur) {
         console.error('Erreur lors de la récupération des données du sondage :', erreur);
       }
@@ -33,6 +38,31 @@ const AfficherSondage = () => {
     // recupererDonnees();
 
   }, []); // L'effet sera exécuté une seule fois lors du montage du composant
+
+  useEffect(() => {
+    // Récupérer les données du sondage depuis l'API
+    const sendMail = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/send-mail/{sondage}', {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          },
+        });
+        console.log(response.data);
+        setTitle(response.data.title)
+        setBody(response.data.body);
+      } catch (erreur) {
+        console.error('Erreur lors de la récupération des données du sondage :', erreur);
+      }
+    };
+
+    return () => {
+
+      sendMail();
+    }
+    // recupererDonnees();
+
+  }, []);
 
 
   return (
@@ -70,7 +100,7 @@ const AfficherSondage = () => {
       }
 <div class="w-64 h-auto bg-gray-300 mb-16">
 <ul class="">
-        <h3 className='bg-orange-500 text-xl text-white'>{titre}</h3>
+<h3 className='bg-orange-500 text-xl text-white'>{titre}</h3>
         <ul>
           {contenu.map((question, indexQuestion) => (
             <li key={indexQuestion}>

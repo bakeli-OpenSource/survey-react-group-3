@@ -48,7 +48,7 @@ const CreateForm = () => {
 
         try {
             // Envoyer une requête POST à l'API Laravel
-            const response = await axios.post('http://localhost:8000/api/sondage/create', {
+            const response = await axios.post('https://api-survey-3.fewnu.app/api/sondage/create', {
                 titre: titre,
                 contenu: contenu,             
             },
